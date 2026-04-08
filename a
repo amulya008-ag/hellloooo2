@@ -1,0 +1,94 @@
+EXP 11 – JUNIT (ECLIPSE)
+
+🔹 DO THIS
+	1.	Open Eclipse
+	2.	File → New → Java Project → Name: JUnitDemo
+	3.	Right click src → New → Class → Name: Calculator
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+	4.	Right click project → Build Path → Add Library → JUnit → JUnit5 → Finish
+	5.	Right click src → New → Class → Name: CalculatorTest
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class CalculatorTest {
+    Calculator calc = new Calculator();
+
+    @Test
+    public void testAdd() {
+        assertEquals(5, calc.add(2, 3));
+    }
+}
+	6.	Right click CalculatorTest.java → Run As → JUnit Test
+
+
+exp 12 
+ EXP 12 – MAVEN + JUNIT
+
+🔹 DO THIS
+	1.	File → New → Other → Maven Project
+	2.	Tick: ✔ Create simple project
+	3.	Next
+
+Fill:
+	•	Group Id: com.example
+	•	Artifact Id: maven-demo
+
+	4.	Finish
+
+⸻
+
+🔹 ADD FILES
+
+👉 src/main/java → Calculator (same code as Exp 11)
+👉 src/test/java → CalculatorTest (same code)
+
+⸻
+
+🔹 EDIT pom.xml
+
+👉 Double click pom.xml
+
+Inside <dependencies> add:
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>5.10.0</version>
+    <scope>test</scope>
+</dependency>
+🔹 RUN
+
+Right click project → Run As → Maven test
+output- 
+BUILD SUCCESS
+Tests run: 1
+
+❌ IF NOT
+	•	Non-parseable POM → wrong file edited
+	•	Fix → open correct maven-demo/pom.xml
+
+experiment 13 
+docker run -d -p 8081:8080 jenkins/jenkins:lts
+wait 1 min 
+http://localhost:8081
+🔹 CREATE JOB
+	•	New Item → Name: test-job
+	•	Freestyle Project → OK
+🔹 BUILD STEP
+
+Add → Execute Shell:
+echo "Running Test"
+echo "Tests run: 1, Failures: 0"
+save 
+
+run build now-> console output 
+Running Test
+Tests run: 1, Failures: 0
+
+if not then 
+docker ps
+if not running 
+docker start <cont_id>
