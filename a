@@ -1,4 +1,19 @@
 EXP 11 – JUNIT (ECLIPSE)
+mvn archetype:generate
+cd devops-labs
+mvn clean test
+
+git init
+git add .
+git commit -m "DevOps Labs"
+git remote add origin <repo-url>
+git push -u origin main
+
+👉 Jenkins (Windows fix)
+
+mvn clean compile
+mvn test
+
 
 🔹 DO THIS
 	1.	Open Eclipse
